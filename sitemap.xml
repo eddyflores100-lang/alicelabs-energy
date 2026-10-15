@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- HOMEPAGE (covers all anchors: #how-it-works, #markets, #about, #solutions, #for-agents) -->
+  <url>
+    <loc>https://alicelabs.energy/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://alicelabs.energy/android-chrome-512x512.png</image:loc>
+      <image:title>AliceLabs commercial energy auction platform</image:title>
+      <image:caption>12+ certified suppliers bidding for your commercial electricity and natural gas contract</image:caption>
+    </image:image>
+  </url>
+
+  <!-- LEGAL PAGES -->
+  <url>
+    <loc>https://alicelabs.energy/privacy</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://alicelabs.energy/terms</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://alicelabs.energy/affiliate</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- AGENT PROGRAM -->
+  <url>
+    <loc>https://alicelabs.energy/agents</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- MCP SERVER LISTING -->
+  <url>
+    <loc>https://alicelabs.energy/mcp/alicelabs-energy</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://alicelabs.energy/android-chrome-512x512.png</image:loc>
+      <image:title>AliceLabs Energy MCP Server — tools for AI agents</image:title>
+    </image:image>
+  </url>
+
+  <!-- AI AGENT DISCOVERY FILES -->
+  <url>
+    <loc>https://alicelabs.energy/llms.txt</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alicelabs.energy/mcp.json</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

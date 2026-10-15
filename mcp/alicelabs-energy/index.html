@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Search engine verification -->
+<meta name="google-site-verification" content="HOeERHpBTsVd6W3UG6XrIBXcFcverPMvT4XNYIjAKp4" />
+<meta name="msvalidate.01" content="C5938AF5C99A1C12EB5365EB99B3BB4D" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AliceLabs Energy MCP — Commercial Energy Procurement Tools for AI Agents</title>
+<meta name="description" content="MCP server exposing commercial energy procurement tools to AI agents. Real-time supplier auction quotes, eligibility validation, market rate benchmarking for 12+ US deregulated energy markets.">
+
+<!-- OG -->
+<meta property="og:title" content="AliceLabs Energy MCP — Energy Procurement Tools for AI Agents">
+<meta property="og:description" content="12+ certified suppliers. Real-time auction quotes. 25-40% savings. Free for AI agents.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alicelabs.energy/mcp/alicelabs-energy">
+<meta property="og:image" content="https://alicelabs.energy/android-chrome-512x512.png">
+
+<!-- Tailwind + Fonts -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: #0B1220;
+    color: #ffffff;
+  }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .gradient-text {
+    background: linear-gradient(90deg, #DF2F4D, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .glow {
+    box-shadow: 0 0 60px rgba(223, 47, 77, 0.3);
+  }
+  .bolt-bg {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(223, 47, 77, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(223, 47, 77, 0.08) 0%, transparent 40%);
+  }
+  .code-block {
+    background: #06080d;
+    border: 1px solid rgba(223, 47, 77, 0.2);
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .tool-card:hover { transform: translateY(-2px); transition: transform 0.2s; }
+  .tool-card { transition: transform 0.2s; }
+  ::selection { background: #DF2F4D; color: white; }
+  .copy-btn {
+    background: rgba(223, 47, 77, 0.1);
+    border: 1px solid rgba(223, 47, 77, 0.3);
+    color: #DF2F4D;
+    transition: all 0.2s;
+  }
+  .copy-btn:hover {
+    background: rgba(223, 47, 77, 0.2);
+    border-color: rgba(223, 47, 77, 0.5);
+  }
+  .tab-active { background: #DF2F4D; color: white; }
+  .tab-inactive { background: rgba(255,255,255,0.05); color: #94a3b8; }
+</style>
+</head>
+<body class="bolt-bg">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 backdrop-blur-lg bg-[#0B1220]/80 border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <a href="https://alicelabs.energy" class="flex items-center gap-2">
+      <svg width="28" height="28" viewBox="0 0 100 100">
+        <path d="M60 10 L25 55 L45 55 L40 90 L75 45 L55 45 L60 10 Z" fill="white" stroke="#DF2F4D" stroke-width="4" style="filter: drop-shadow(0 0 6px #DF2F4D)"/>
+      </svg>
+      <span class="font-extrabold text-lg">AliceLabs</span>
+      <span class="text-xs px-2 py-0.5 rounded-full bg-[#DF2F4D]/10 border border-[#DF2F4D]/30 text-[#DF2F4D] font-bold uppercase tracking-wider">MCP</span>
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="https://marketnow.site/mcp/alicelabs-energy" target="_blank" class="text-slate-400 hover:text-white text-sm font-medium transition-colors">MarketNow</a>
+      <a href="https://alicelabs.energy" class="text-slate-400 hover:text-white text-sm font-medium transition-colors">Website</a>
+      <a href="#install" class="px-4 py-1.5 bg-[#DF2F4D] hover:bg-[#C92843] text-white text-sm font-bold rounded-lg transition-colors">Install</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="relative overflow-hidden py-20 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#DF2F4D]/10 border border-[#DF2F4D]/30 text-[#DF2F4D] text-xs font-bold uppercase tracking-widest mb-6">
+      <span class="w-2 h-2 rounded-full bg-[#DF2F4D] animate-pulse"></span>
+      MCP Server · v1.0.0 · Production Ready
+    </div>
+
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.05]">
+      Energy Procurement<br/>
+      <span class="gradient-text">for AI Agents.</span>
+    </h1>
+
+    <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+      Give your agent real-time access to commercial electricity and natural gas auctions.
+      <strong class="text-white">12+ certified suppliers</strong> bidding for your clients' contracts.
+      <strong class="text-white">25-40% savings</strong> vs utility default rates. Free for agents.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+      <a href="#install" class="inline-flex items-center gap-2 px-6 py-3 bg-[#DF2F4D] hover:bg-[#C92843] text-white font-bold rounded-lg transition-colors glow">
+        Install MCP Server
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#tools" class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white font-bold rounded-lg border border-white/10 transition-colors">
+        View Tools
+      </a>
+      <a href="https://alicelabs.energy" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 text-slate-400 hover:text-white font-bold transition-colors">
+        Live Site ↗
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-3xl font-extrabold gradient-text">12+</div>
+        <div class="text-xs text-slate-400 mt-1">Certified suppliers</div>
+      </div>
+      <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-3xl font-extrabold gradient-text">25-40%</div>
+        <div class="text-xs text-slate-400 mt-1">Below utility default</div>
+      </div>
+      <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-3xl font-extrabold gradient-text">14</div>
+        <div class="text-xs text-slate-400 mt-1">US states + Canada</div>
+      </div>
+      <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-3xl font-extrabold gradient-text">$0</div>
+        <div class="text-xs text-slate-400 mt-1">Cost for agents</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- BADGES -->
+<section class="px-6 pb-8">
+  <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 text-xs">
+    <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">✓ MCP 1.0 compatible</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">✓ Claude Desktop</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">✓ Cursor</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">✓ Cline</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">✓ Continue.dev</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">✓ stdio + HTTP transport</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">✓ Affiliate revenue</span>
+    <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 font-medium">✓ No API key required</span>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" class="px-6 py-16">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold uppercase tracking-widest text-[#DF2F4D] mb-3">3 Tools Exposed</div>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Tools your agent can call</h2>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Real production tools, not stubs. Each returns structured JSON your agent can reason over.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Tool 1 -->
+      <div class="tool-card p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#DF2F4D]/40">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 rounded-xl bg-[#DF2F4D]/10 border border-[#DF2F4D]/30 flex items-center justify-center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DF2F4D" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 font-bold">WRITE</span>
+        </div>
+        <h3 class="font-bold text-lg mb-2 font-mono">get_energy_quotes</h3>
+        <p class="text-slate-400 text-sm mb-4">Submit a commercial utility bill and receive a real-time quote request ID + estimated savings range from 12+ certified suppliers.</p>
+        <div class="text-xs text-slate-500 font-mono mb-2">Returns:</div>
+        <ul class="text-xs text-slate-300 space-y-1 font-mono">
+          <li>• quote_id (AL-XXXXXX)</li>
+          <li>• estimated_monthly_savings</li>
+          <li>• supplier_list[]</li>
+          <li>• auction_status</li>
+        </ul>
+      </div>
+
+      <!-- Tool 2 -->
+      <div class="tool-card p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#DF2F4D]/40">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 rounded-xl bg-[#DF2F4D]/10 border border-[#DF2F4D]/30 flex items-center justify-center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DF2F4D" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-bold">READ</span>
+        </div>
+        <h3 class="font-bold text-lg mb-2 font-mono">check_eligibility</h3>
+        <p class="text-slate-400 text-sm mb-4">Validate whether a business qualifies for competitive energy auctions — by state, ZIP, fuel type, and account size.</p>
+        <div class="text-xs text-slate-500 font-mono mb-2">Returns:</div>
+        <ul class="text-xs text-slate-300 space-y-1 font-mono">
+          <li>• eligible (bool)</li>
+          <li>• reason / suggestion</li>
+          <li>• state_name, markets[]</li>
+          <li>• savings estimate</li>
+        </ul>
+      </div>
+
+      <!-- Tool 3 -->
+      <div class="tool-card p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#DF2F4D]/40">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 rounded-xl bg-[#DF2F4D]/10 border border-[#DF2F4D]/30 flex items-center justify-center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DF2F4D" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-bold">READ</span>
+        </div>
+        <h3 class="font-bold text-lg mb-2 font-mono">get_market_rates</h3>
+        <p class="text-slate-400 text-sm mb-4">Default utility rate vs competitive auction-clearing rate by state/ZIP — for benchmarking and cost-comparison reports.</p>
+        <div class="text-xs text-slate-500 font-mono mb-2">Returns:</div>
+        <ul class="text-xs text-slate-300 space-y-1 font-mono">
+          <li>• utility_default_rate</li>
+          <li>• auction_clearing_rate</li>
+          <li>• savings_pct</li>
+          <li>• monthly + annual estimate</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section id="install" class="px-6 py-16 bg-gradient-to-b from-transparent to-[#0B1220]">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold uppercase tracking-widest text-[#DF2F4D] mb-3">3-Minute Setup</div>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Install in your MCP client</h2>
+      <p class="text-slate-400 text-lg">No API key required. Just add to your config and restart.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex flex-wrap gap-2 justify-center mb-6">
+      <button onclick="showTab('claude')" id="tab-claude" class="px-4 py-2 rounded-lg text-sm font-bold tab-active">Claude Desktop</button>
+      <button onclick="showTab('cursor')" id="tab-cursor" class="px-4 py-2 rounded-lg text-sm font-bold tab-inactive">Cursor</button>
+      <button onclick="showTab('cline')" id="tab-cline" class="px-4 py-2 rounded-lg text-sm font-bold tab-inactive">Cline</button>
+      <button onclick="showTab('http')" id="tab-http" class="px-4 py-2 rounded-lg text-sm font-bold tab-inactive">HTTP / curl</button>
+    </div>
+
+    <div class="relative">
+      <div id="code-claude" class="code-block p-5">
+        <div class="text-slate-500 text-xs mb-2"># ~/Library/Application Support/Claude/claude_desktop_config.json (macOS)
+# or %APPDATA%\Claude\claude_desktop_config.json (Windows)</div>
+<pre><span class="text-slate-500">{</span>
+  <span class="text-[#DF2F4D]">"mcpServers"</span>: {
+    <span class="text-[#DF2F4D]">"alicelabs-energy"</span>: {
+      <span class="text-[#DF2F4D]">"command"</span>: <span class="text-green-400">"npx"</span>,
+      <span class="text-[#DF2F4D]">"args"</span>: [<span class="text-green-400">"-y"</span>, <span class="text-green-400">"@alicelabs/energy-mcp"</span>]
+    }
+  }
+<span class="text-slate-500">}</span></pre>
+      </div>
+      <div id="code-cursor" class="code-block p-5 hidden">
+        <div class="text-slate-500 text-xs mb-2"># .cursor/mcp.json (project-level) or ~/.cursor/mcp.json (global)</div>
+<pre><span class="text-slate-500">{</span>
+  <span class="text-[#DF2F4D]">"servers"</span>: {
+    <span class="text-[#DF2F4D]">"alicelabs-energy"</span>: {
+      <span class="text-[#DF2F4D]">"command"</span>: <span class="text-green-400">"npx"</span>,
+      <span class="text-[#DF2F4D]">"args"</span>: [<span class="text-green-400">"-y"</span>, <span class="text-green-400">"@alicelabs/energy-mcp"</span>]
+    }
+  }
+<span class="text-slate-500">}</span></pre>
+      </div>
+      <div id="code-cline" class="code-block p-5 hidden">
+        <div class="text-slate-500 text-xs mb-2"># ~/.config/cline/cline_mcp_settings.json</div>
+<pre><span class="text-slate-500">{</span>
+  <span class="text-[#DF2F4D]">"mcpServers"</span>: {
+    <span class="text-[#DF2F4D]">"alicelabs-energy"</span>: {
+      <span class="text-[#DF2F4D]">"command"</span>: <span class="text-green-400">"npx"</span>,
+      <span class="text-[#DF2F4D]">"args"</span>: [<span class="text-green-400">"-y"</span>, <span class="text-green-400">"@alicelabs/energy-mcp"</span>],
+      <span class="text-[#DF2F4D]">"env"</span>: {}
+    }
+  }
+<span class="text-slate-500">}</span></pre>
+      </div>
+      <div id="code-http" class="code-block p-5 hidden">
+        <div class="text-slate-500 text-xs mb-2"># HTTP transport (for hosted agents)</div>
+<pre><span class="text-[#DF2F4D]">curl</span> -X POST https://alicelabs.energy/mcp/alicelabs-energy \
+  -H <span class="text-green-400">"Content-Type: application/json"</span> \
+  -d <span class="text-green-400">'{"tool": "get_market_rates", "args": {"state": "TX", "fuel_type": "Electric"}}'</span>
+
+<span class="text-slate-500 text-xs"># Response:</span>
+<span class="text-slate-500">{</span>
+  <span class="text-[#DF2F4D]">"utility_default_rate"</span>: <span class="text-green-400">"12.4¢/kWh"</span>,
+  <span class="text-[#DF2F4D]">"auction_clearing_rate"</span>: <span class="text-green-400">"8.2¢/kWh"</span>,
+  <span class="text-[#DF2F4D]">"savings_pct"</span>: <span class="text-yellow-400">33.9</span>,
+  <span class="text-[#DF2F4D]">"monthly_savings_estimate"</span>: <span class="text-green-400">"$420/mo (at 10,000 kWh/mo)"</span>
+<span class="text-slate-500">}</span></pre>
+      </div>
+      <button onclick="copyCode()" class="absolute top-3 right-3 copy-btn px-3 py-1 rounded text-xs font-bold">Copy</button>
+    </div>
+
+    <div class="text-center mt-8">
+      <p class="text-slate-400 text-sm mb-3">After saving the config file, restart your MCP client. The server will auto-download via npx.</p>
+      <div class="flex flex-wrap items-center justify-center gap-3 text-xs">
+        <span class="px-3 py-1 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 font-bold">✓ Python 3.10+ required (auto-installed by npx)</span>
+        <span class="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-bold">✓ No API key</span>
+        <span class="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 font-bold">✓ Open source (MIT)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="px-6 py-16">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold uppercase tracking-widest text-[#DF2F4D] mb-3">Built for Vertical AI Agents</div>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Agent types that benefit</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-2xl mb-2">💰</div>
+        <h4 class="font-bold mb-1">CFO Copilots</h4>
+        <p class="text-xs text-slate-400">Brex AI, Rippling, Ramp — benchmark energy spend across client portfolio quarterly.</p>
+      </div>
+      <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-2xl mb-2">🛒</div>
+        <h4 class="font-bold mb-1">Procurement Copilots</h4>
+        <p class="text-xs text-slate-400">Zip AI, Tropic — auto-procure energy for new client onboardings.</p>
+      </div>
+      <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-2xl mb-2">🏭</div>
+        <h4 class="font-bold mb-1">Manufacturing ERP AI</h4>
+        <p class="text-xs text-slate-400">Reduce COGS by auctioning the largest utility line item.</p>
+      </div>
+      <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-2xl mb-2">🏥</div>
+        <h4 class="font-bold mb-1">Healthcare Ops AI</h4>
+        <p class="text-xs text-slate-400">Optimize facility energy costs across multi-site hospital networks.</p>
+      </div>
+      <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-2xl mb-2">🏢</div>
+        <h4 class="font-bold mb-1">Property Mgmt AI</h4>
+        <p class="text-xs text-slate-400">Aggregate portfolio electricity + gas for master contract renewal.</p>
+      </div>
+      <div class="p-5 rounded-xl bg-white/[0.03] border border-white/10">
+        <div class="text-2xl mb-2">🛠️</div>
+        <h4 class="font-bold mb-1">Facility Management</h4>
+        <p class="text-xs text-slate-400">Siemens / JCI copilots — portfolio rebids + market rate benchmarking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIATE -->
+<section class="px-6 py-16">
+  <div class="max-w-4xl mx-auto p-8 rounded-3xl bg-gradient-to-br from-[#DF2F4D]/10 to-transparent border border-[#DF2F4D]/30">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="px-3 py-1 rounded-full bg-[#DF2F4D] text-white text-xs font-bold uppercase tracking-wider">Affiliate Program</span>
+    </div>
+    <h2 class="text-3xl font-extrabold mb-3">Agents earn commission on every closed lead</h2>
+    <p class="text-slate-300 mb-6">When you submit a lead via <code class="text-[#DF2F4D] font-mono">get_energy_quotes</code> with your <code class="text-[#DF2F4D] font-mono">agent_id</code>, you earn commission when the lead converts to a signed energy contract.</p>
+    <div class="grid md:grid-cols-3 gap-4 mb-6">
+      <div class="p-4 rounded-xl bg-black/30 border border-white/10">
+        <div class="text-2xl font-extrabold gradient-text mb-1">$0.005/kWh</div>
+        <div class="text-xs text-slate-400">Electricity contracts (~$500-$2,500 per deal)</div>
+      </div>
+      <div class="p-4 rounded-xl bg-black/30 border border-white/10">
+        <div class="text-2xl font-extrabold gradient-text mb-1">$0.05/therm</div>
+        <div class="text-xs text-slate-400">Natural gas contracts (~$250-$1,500 per deal)</div>
+      </div>
+      <div class="p-4 rounded-xl bg-black/30 border border-white/10">
+        <div class="text-2xl font-extrabold gradient-text mb-1">+20%</div>
+        <div class="text-xs text-slate-400">Bonus on contracts > 24 months term</div>
+      </div>
+    </div>
+    <a href="https://alicelabs.energy/agents" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#DF2F4D] hover:bg-[#C92843] text-white font-bold text-sm rounded-lg transition-colors">
+      Get your agent_id →
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-6 py-12 border-t border-white/5">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+    <div class="flex items-center gap-3">
+      <svg width="20" height="20" viewBox="0 0 100 100">
+        <path d="M60 10 L25 55 L45 55 L40 90 L75 45 L55 45 L60 10 Z" fill="white" stroke="#DF2F4D" stroke-width="4"/>
+      </svg>
+      <span class="text-slate-400">AliceLabs LLC · Authorized Affiliate of Bid On Energy</span>
+    </div>
+    <div class="flex gap-6 text-slate-400">
+      <a href="https://alicelabs.energy" class="hover:text-white">Website</a>
+      <a href="https://marketnow.site/mcp/alicelabs-energy" target="_blank" class="hover:text-white">MarketNow</a>
+      <a href="mailto:support@alicelabs.energy" class="hover:text-white">Contact</a>
+      <a href="https://alicelabs.energy/privacy" class="hover:text-white">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showTab(tab) {
+  ['claude', 'cursor', 'cline', 'http'].forEach(t => {
+    document.getElementById('code-' + t).classList.add('hidden');
+    document.getElementById('tab-' + t).classList.remove('tab-active');
+    document.getElementById('tab-' + t).classList.add('tab-inactive');
+  });
+  document.getElementById('code-' + tab).classList.remove('hidden');
+  document.getElementById('tab-' + tab).classList.add('tab-active');
+  document.getElementById('tab-' + tab).classList.remove('tab-inactive');
+}
+
+function copyCode() {
+  const visible = document.querySelector('.code-block:not(.hidden) pre');
+  if (visible) {
+    navigator.clipboard.writeText(visible.textContent);
+    const btn = document.querySelector('.copy-btn');
+    const original = btn.textContent;
+    btn.textContent = '✓ Copied';
+    setTimeout(() => { btn.textContent = original; }, 1500);
+  }
+}
+</script>
+
+</body>
+</html>

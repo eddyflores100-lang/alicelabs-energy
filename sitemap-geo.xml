@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+
+  <!-- GEO LANDING PAGES FOR EACH DEREGULATED US STATE -->
+
+  <!-- Texas -->
+  <url>
+    <loc>https://alicelabs.energy/states/texas</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:location>29.7604,-95.3698</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- New York -->
+  <url>
+    <loc>https://alicelabs.energy/states/new-york</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:location>40.7128,-74.0060</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Pennsylvania -->
+  <url>
+    <loc>https://alicelabs.energy/states/pennsylvania</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:location>39.9526,-75.1652</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Ohio -->
+  <url>
+    <loc>https://alicelabs.energy/states/ohio</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:location>39.9612,-82.9988</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- New Jersey -->
+  <url>
+    <loc>https://alicelabs.energy/states/new-jersey</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:location>40.0583,-74.4057</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Illinois -->
+  <url>
+    <loc>https://alicelabs.energy/states/illinois</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:location>41.8781,-87.6298</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Maryland -->
+  <url>
+    <loc>https://alicelabs.energy/states/maryland</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:location>39.2904,-76.6122</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Massachusetts -->
+  <url>
+    <loc>https://alicelabs.energy/states/massachusetts</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:location>42.3601,-71.0589</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Connecticut -->
+  <url>
+    <loc>https://alicelabs.energy/states/connecticut</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:location>41.7658,-72.6734</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Maine -->
+  <url>
+    <loc>https://alicelabs.energy/states/maine</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:location>44.3148,-69.8020</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- New Hampshire -->
+  <url>
+    <loc>https://alicelabs.energy/states/new-hampshire</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:location>43.4525,-71.5688</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Rhode Island -->
+  <url>
+    <loc>https://alicelabs.energy/states/rhode-island</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:location>41.5801,-71.4774</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Delaware -->
+  <url>
+    <loc>https://alicelabs.energy/states/delaware</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:location>39.7391,-75.5398</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Washington DC -->
+  <url>
+    <loc>https://alicelabs.energy/states/washington-dc</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:location>38.9072,-77.0369</geo:location>
+    </geo:geo>
+  </url>
+
+  <!-- Canada (multi-province) -->
+  <url>
+    <loc>https://alicelabs.energy/states/canada</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:location>43.6532,-79.3832</geo:location>
+    </geo:geo>
+  </url>
+
+</urlset>

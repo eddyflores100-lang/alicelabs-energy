@@ -1,0 +1,115 @@
+# robots.txt — AliceLabs Energy
+# https://alicelabs.energy/
+
+# === All crawlers allowed ===
+User-agent: *
+Allow: /
+Disallow: /index_checkpoint_
+Disallow: /*.bak$
+Disallow: /*.log$
+
+# === AI/LLM crawlers explicitly welcome ===
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bard
+Allow: /
+
+User-agent: Gemini
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# === Block known content scrapers ===
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# === Sitemap discovery ===
+Sitemap: https://alicelabs.energy/sitemap-index.xml
+Sitemap: https://alicelabs.energy/sitemap.xml
+Sitemap: https://alicelabs.energy/sitemap-geo.xml
+Sitemap: https://alicelabs.energy/sitemap-mcp.xml
+
+# === AI agent discovery files ===
+# https://alicelabs.energy/llms.txt
+# https://alicelabs.energy/mcp.json
+# https://alicelabs.energy/.well-known/ai-plugin.json
+
+# === Crawl delay for fairness ===
+Crawl-delay: 1

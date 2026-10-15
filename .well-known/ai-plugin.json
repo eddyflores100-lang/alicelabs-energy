@@ -1,0 +1,39 @@
+{
+  "$schema": "https://platform.openai.com/schema/plugin/ai-plugin.json",
+  "api": {
+    "type": "mcp",
+    "url": "https://alicelabs.energy/mcp/alicelabs-energy"
+  },
+  "name_for_human": "AliceLabs Energy",
+  "name_for_model": "alicelabs_energy",
+  "description_for_human": "Get 12+ certified energy suppliers bidding for your commercial electricity and natural gas contract. 25-40% savings vs utility default rates. TX, NY, PA, OH, NJ, IL, MD, MA.",
+  "description_for_model": "Commercial energy procurement. Submit utility bills to a real-time auction platform where 12+ certified energy suppliers (Constellation, Direct Energy, Vistra, NRG, ENGIE, Calpine and others) compete for the contract. Tools: get_energy_quotes (submit lead), check_eligibility (validate ZIP/state), get_market_rates (default vs auction rate).",
+  "logo_url": "https://alicelabs.energy/android-chrome-192x192.png",
+  "contact_email": "support@alicelabs.energy",
+  "legal_info_url": "https://alicelabs.energy/terms",
+  "privacy_policy_url": "https://alicelabs.energy/privacy",
+  "homepage_url": "https://alicelabs.energy",
+  "category": "business",
+  "tags": ["energy", "procurement", "electricity", "natural-gas", "B2B", "auction", "supplier-bidding", "commercial", "deregulated-markets"],
+  "capabilities": {
+    "tools": [
+      "get_energy_quotes",
+      "check_eligibility",
+      "get_market_rates"
+    ],
+    "coverage": [
+      "US-TX", "US-NY", "US-PA", "US-OH", "US-NJ", "US-IL", "US-MD", "US-MA",
+      "US-CT", "US-ME", "US-NH", "US-RI", "US-DE", "US-DC", "CA"
+    ],
+    "suppliers": [
+      "Constellation", "Direct Energy", "Vistra", "NRG", "ENGIE", "Calpine",
+      "Just Energy", "Public Power", "Spark Energy", "Tomorrow Energy",
+      "Chariot Energy", "4Change Energy", "Gexa Energy"
+    ]
+  },
+  "version": "1.0.0",
+  "author": {
+    "name": "AliceLabs LLC",
+    "url": "https://alicelabs.energy"
+  }
+}

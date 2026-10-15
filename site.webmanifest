@@ -1,0 +1,21 @@
+{
+  "name": "AliceLabs \u00d7 Bid On Energy",
+  "short_name": "AliceLabs",
+  "description": "Commercial energy auction platform. Get 12+ suppliers bidding for your electricity and natural gas contract.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#DF2F4D",
+  "background_color": "#0B1220",
+  "display": "standalone",
+  "start_url": "/"
+}

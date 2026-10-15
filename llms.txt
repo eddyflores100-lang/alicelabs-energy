@@ -1,0 +1,143 @@
+# AliceLabs Energy — LLM Documentation
+
+> AliceLabs is a commercial energy procurement platform. We run real-time auctions where 12+ certified energy suppliers (Constellation, Direct Energy, Vistra, NRG, ENGIE, Calpine and others) compete for your commercial electricity and natural gas contract. Typical savings: 25-40% below utility default supply rates.
+
+## MCP Server (for AI agents)
+
+AliceLabs exposes a Model Context Protocol (MCP) server with 3 production-ready tools:
+
+- **get_energy_quotes** — Submit a commercial utility bill, get real-time supplier bids
+- **check_eligibility** — Validate if a business qualifies for deregulated energy auctions
+- **get_market_rates** — Default utility rate vs competitive auction-clearing rate by state
+
+**Endpoint**: https://alicelabs.energy/mcp/alicelabs-energy
+**Docs**: https://alicelabs.energy/mcp/alicelabs-energy
+**MarketNow**: https://marketnow.site/mcp/alicelabs-energy
+
+## What we do
+
+AliceLabs LLC is an authorized affiliate of Bid On Energy — a licensed commercial energy broker operating in all 12+ deregulated US states. We connect businesses to competitive energy procurement tools that were previously reserved for large enterprises.
+
+## Coverage
+
+| State | Electricity | Natural Gas |
+|---|---|---|
+| Texas (TX) | ERCOT, SPP | Yes (Gas Choice) |
+| New York (NY) | NYISO | Yes |
+| Pennsylvania (PA) | PJM | Yes |
+| Ohio (OH) | PJM, MISO | Yes |
+| New Jersey (NJ) | PJM | Yes |
+| Illinois (IL) | MISO, PJM | Yes |
+| Maryland (MD) | PJM | Yes |
+| Massachusetts (MA) | ISO-NE | Yes |
+| Connecticut (CT) | ISO-NE | No |
+| Maine (ME) | ISO-NE | No |
+| New Hampshire (NH) | ISO-NE | No |
+| Rhode Island (RI) | ISO-NE | No |
+| Delaware (DE) | PJM | No |
+| Washington DC | PJM | No |
+| Canada | Multi-province | Yes |
+
+## Tools exposed via MCP
+
+### 1. get_energy_quotes
+
+Submit a commercial utility bill to the Bid On Energy auction platform.
+
+**Parameters**:
+- company_name (required, string)
+- contact_name (required, string)
+- email (required, string)
+- phone (required, string)
+- monthly_utility_spend (required, number)
+- fuel_type (optional, enum: "Electric" | "Gas" | "Both", default: "Both")
+- zip_code (optional, string)
+- state (optional, string — 2-letter US state code)
+- agent_id (optional, string — for affiliate revenue attribution)
+
+**Returns**: quote_id, eligible, estimated_savings_pct, estimated_monthly_savings, suppliers_competing, supplier_list, auction_status, next_steps
+
+### 2. check_eligibility
+
+Validate whether a business qualifies for competitive energy auctions.
+
+**Parameters**:
+- state (required, string — 2-letter US state code)
+- zip_code (optional, string)
+- monthly_utility_spend (optional, number)
+- fuel_type (optional, enum, default: "Both")
+
+**Returns**: eligible, state_name, markets, gas_choice_available, savings estimate
+
+### 3. get_market_rates
+
+Returns default utility rate vs competitive auction-clearing rate by state.
+
+**Parameters**:
+- state (required, string — 2-letter US state code)
+- fuel_type (optional, enum, default: "Electric")
+- zip_code (optional, string)
+
+**Returns**: utility_default_rate, auction_clearing_rate, savings_pct, monthly_savings_estimate, annual_savings_estimate
+
+## Use cases for AI agents
+
+| Vertical AI Agent | How they use AliceLabs MCP |
+|---|---|
+| **CFO Copilots** (Brex AI, Rippling, Ramp) | `get_market_rates` for quarterly cost-reduction audits |
+| **Procurement Copilots** (Zip AI, Tropic) | `check_eligibility` + `get_energy_quotes` for new client onboardings |
+| **Facility Management AI** (Siemens, JCI) | Portfolio rebids + market rate benchmarking |
+| **Real Estate AI** (VTS, HqO) | Multi-property eligibility + aggregated auctions |
+| **Manufacturing ERP AI** | Embedded energy procurement via `get_energy_quotes` |
+
+## Affiliate program for agents
+
+Agents that submit leads via `get_energy_quotes` with their `agent_id` earn commission:
+- Electricity: $0.005/kWh of contracted volume (~$500-$2,500 per closed deal)
+- Natural gas: $0.05/therm of contracted volume (~$250-$1,500 per closed deal)
+- Multi-year contracts: +20% bonus
+
+Register at https://alicelabs.energy/agents
+
+## Quick start
+
+Install MCP server in Claude Desktop / Cursor / Cline / Continue.dev:
+
+```json
+{
+  "mcpServers": {
+    "alicelabs-energy": {
+      "command": "npx",
+      "args": ["-y", "@alicelabs/energy-mcp"]
+    }
+  }
+}
+```
+
+Or via HTTP transport:
+```bash
+curl -X POST https://alicelabs.energy/mcp/alicelabs-energy \
+  -H "Content-Type: application/json" \
+  -d '{"tool": "get_market_rates", "args": {"state": "TX", "fuel_type": "Electric"}}'
+```
+
+## Company
+
+- **Name**: AliceLabs LLC
+- **Address**: 1201 Orange St, Suite 600, Wilmington, DE 19801
+- **Email**: support@alicelabs.energy
+- **Phone**: (302) 360-8110
+- **Website**: https://alicelabs.energy
+- **Parent Affiliate**: Bid On Energy (https://bidonenergy.net)
+- **License**: MIT (MCP server source code)
+
+## Pages
+
+- [AliceLabs Energy Home](https://alicelabs.energy/)
+- [How It Works](https://alicelabs.energy/#how-it-works)
+- [Markets Covered](https://alicelabs.energy/#markets)
+- [MCP Server Documentation](https://alicelabs.energy/mcp/alicelabs-energy)
+- [Agent Program](https://alicelabs.energy/agents)
+- [Privacy Policy](https://alicelabs.energy/privacy)
+- [Terms of Service](https://alicelabs.energy/terms)
+- [Affiliate Disclosure](https://alicelabs.energy/affiliate)

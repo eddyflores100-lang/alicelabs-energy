@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/specification/main/schema/mcp-server-schema.json",
+  "name": "alicelabs-energy",
+  "version": "1.0.0",
+  "description": "Commercial energy procurement MCP server. Get real-time supplier auction quotes, validate eligibility, and benchmark market rates for 12+ US deregulated energy markets.",
+  "publisher": {
+    "name": "AliceLabs LLC",
+    "url": "https://alicelabs.energy",
+    "email": "support@alicelabs.energy",
+    "logo": "https://alicelabs.energy/android-chrome-512x512.png"
+  },
+  "homepage": "https://alicelabs.energy/mcp/alicelabs-energy",
+  "documentation": "https://alicelabs.energy/mcp/alicelabs-energy",
+  "repository": "https://marketnow.site/mcp/alicelabs-energy",
+  "license": "MIT",
+  "categories": [
+    "energy",
+    "procurement",
+    "business",
+    "finance",
+    "commercial-electricity",
+    "natural-gas",
+    "deregulated-markets",
+    "B2B",
+    "vertical-ai",
+    "mcp"
+  ],
+  "tools": [
+    {
+      "name": "get_energy_quotes",
+      "description": "Submit a commercial utility bill to the Bid On Energy auction platform. Returns quote ID + estimated savings range from 12+ certified suppliers.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "company_name": {"type": "string", "description": "Legal business name"},
+          "contact_name": {"type": "string", "description": "Full name of decision-maker"},
+          "email": {"type": "string", "description": "Business email"},
+          "phone": {"type": "string", "description": "Phone number"},
+          "monthly_utility_spend": {"type": "number", "description": "Monthly spend in USD"},
+          "fuel_type": {"type": "string", "enum": ["Electric", "Gas", "Both"], "default": "Both"},
+          "zip_code": {"type": "string", "description": "5-digit US ZIP"},
+          "state": {"type": "string", "description": "2-letter US state code"},
+          "agent_id": {"type": "string", "description": "MCP agent ID for affiliate attribution"}
+        },
+        "required": ["company_name", "contact_name", "email", "phone", "monthly_utility_spend"]
+      },
+      "returns": "quote_id, eligible, estimated_savings_pct, suppliers_competing, supplier_list, next_steps"
+    },
+    {
+      "name": "check_eligibility",
+      "description": "Validate whether a business qualifies for competitive energy auctions in a given US state/ZIP.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "state": {"type": "string", "description": "2-letter US state code"},
+          "zip_code": {"type": "string", "description": "5-digit US ZIP"},
+          "monthly_utility_spend": {"type": "number", "description": "Monthly commercial utility spend in USD"},
+          "fuel_type": {"type": "string", "enum": ["Electric", "Gas", "Both"], "default": "Both"}
+        },
+        "required": ["state"]
+      },
+      "returns": "eligible, state_name, markets, gas_choice_available, savings_estimate"
+    },
+    {
+      "name": "get_market_rates",
+      "description": "Returns default utility rate vs competitive auction-clearing rate by state/ZIP. Useful for benchmarking savings opportunities.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "state": {"type": "string", "description": "2-letter US state code"},
+          "fuel_type": {"type": "string", "enum": ["Electric", "Gas"], "default": "Electric"},
+          "zip_code": {"type": "string", "description": "5-digit US ZIP"}
+        },
+        "required": ["state"]
+      },
+      "returns": "utility_default_rate, auction_clearing_rate, savings_pct, monthly_savings_estimate"
+    }
+  ],
+  "resources": [
+    {
+      "uri": "alicelabs://suppliers",
+      "description": "List of certified suppliers in the Bid On Energy network"
+    },
+    {
+      "uri": "alicelabs://markets",
+      "description": "List of deregulated US states with electricity/gas choice"
+    }
+  ],
+  "transports": {
+    "stdio": {
+      "command": "npx",
+      "args": ["-y", "@alicelabs/energy-mcp"]
+    },
+    "http": {
+      "url": "https://alicelabs.energy/mcp/alicelabs-energy"
+    }
+  },
+  "compatibility": {
+    "mcp-version": "1.0",
+    "clients": ["Claude Desktop", "Cursor", "Cline", "Continue.dev", "Zed"]
+  },
+  "pricing": {
+    "type": "free",
+    "notes": "Free for AI agents. Affiliate commission earned on closed leads."
+  },
+  "links": {
+    "homepage": "https://alicelabs.energy/",
+    "agents": "https://alicelabs.energy/agents",
+    "affiliate": "https://alicelabs.energy/affiliate",
+    "privacy": "https://alicelabs.energy/privacy",
+    "terms": "https://alicelabs.energy/terms",
+    "marketnow": "https://marketnow.site/mcp/alicelabs-energy"
+  }
+}
