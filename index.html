@@ -508,6 +508,125 @@
   /* Hover lift for cards */
   .hover-lift { transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s; }
   .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.10); }
+
+  /* === MOBILE OPTIMIZATION === */
+  
+  /* Smooth scroll for anchor links */
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  
+  /* Prevent horizontal overflow */
+  body, html { overflow-x: hidden; max-width: 100vw; }
+  
+  /* Responsive typography with clamp() */
+  .hero-title { font-size: clamp(1.75rem, 5vw, 3.5rem) !important; line-height: 1.1 !important; }
+  .hero-subtitle { font-size: clamp(0.875rem, 3vw, 1.125rem) !important; }
+  .section-title { font-size: clamp(1.5rem, 4vw, 3rem) !important; line-height: 1.15 !important; }
+  .section-subtitle { font-size: clamp(0.875rem, 3vw, 1.125rem) !important; }
+  
+  /* Mobile nav: hide desktop nav, show hamburger */
+  @media (max-width: 768px) {
+    .desktop-nav { display: none !important; }
+    .mobile-nav-toggle { display: flex !important; }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: #0B1220; z-index: 100; padding: 24px; flex-direction: column; gap: 16px; overflow-y: auto; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1.25rem; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1); color: #fff; }
+    .mobile-menu button { margin-top: 16px; width: 100%; }
+    
+    /* Hero: stack vertically, reduce padding */
+    .hero-section { padding-top: 80px !important; min-height: auto !important; }
+    .hero-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    
+    /* Stats: 1 column on mobile */
+    .stats-grid { grid-template-columns: 1fr !important; gap: 0.75rem !important; }
+    .stat-card { padding: 1rem !important; }
+    .stat-number { font-size: 1.75rem !important; }
+    .stat-label { font-size: 0.75rem !important; }
+    
+    /* Sections: reduce padding */
+    section { padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 3rem !important; padding-bottom: 3rem !important; }
+    
+    /* Cards: full width, stack */
+    .card-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+    
+    /* Touch targets: minimum 44px (Apple HIG) */
+    button, a.btn, .cta-primary, .cta-ghost, .btn-submit {
+      min-height: 44px; min-width: 44px; padding: 12px 24px !important;
+      font-size: 1rem !important;
+    }
+    
+    /* Modal: full screen on mobile */
+    .modal-content { 
+      max-width: 100% !important; 
+      width: 100% !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
+      min-height: 100vh !important;
+      max-height: 100vh !important;
+      overflow-y: auto !important;
+    }
+    .modal-overlay { padding: 0 !important; }
+    
+    /* Footer: stack columns */
+    .footer-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+    .footer-links { flex-wrap: wrap; gap: 0.5rem !important; }
+    
+    /* Form inputs: 16px font to prevent iOS zoom */
+    input, select, textarea {
+      font-size: 16px !important;
+      padding: 12px 16px !important;
+      border-radius: 8px !important;
+    }
+    
+    /* Prevent text overflow */
+    p, h1, h2, h3, h4 { overflow-wrap: break-word; word-wrap: break-word; }
+    
+    /* Tables: horizontal scroll */
+    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    
+    /* Floating buttons: smaller on mobile */
+    .floating-cta { bottom: 1rem !important; right: 1rem !important; padding: 12px 20px !important; font-size: 0.875rem !important; }
+    
+    /* Images: responsive */
+    img { max-width: 100%; height: auto; }
+    
+    /* Supplier logos: wrap */
+    .supplier-logos { flex-wrap: wrap; justify-content: center; }
+    .supplier-logo { width: 80px !important; height: auto !important; margin: 8px !important; }
+  }
+  
+  /* Tablet adjustments */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero-title { font-size: 2.5rem !important; }
+    .hero-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .card-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  
+  /* Large desktop optimizations */
+  @media (min-width: 1440px) {
+    .hero-title { font-size: 4rem !important; }
+    .section-title { font-size: 3.5rem !important; }
+  }
+  
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    :root { color-scheme: dark; }
+  }
+  
+  /* Safe area for notched devices */
+  @supports (padding: max(0px)) {
+    .nav-bar { padding-left: max(1.5rem, env(safe-area-inset-left)); padding-right: max(1.5rem, env(safe-area-inset-right)); }
+    .floating-cta { bottom: max(1rem, env(safe-area-inset-bottom)); }
+  }
 </style>
 </head>
 <body>
@@ -521,7 +640,10 @@
       <span class="text-xl font-bold tracking-tighter text-on-surface" style="margin-left: -5px;">Energy</span>
     </a>
     <div class="flex items-center gap-4">
-      <div class="hidden md:flex items-center gap-8 mr-4">
+      <button class="mobile-nav-toggle md:hidden flex items-center justify-center w-10 h-10 text-white" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+        <span class="material-symbols-outlined" style="font-size:24px;">menu</span>
+      </button>
+      <div class="hidden md:flex items-center gap-8 mr-4 desktop-nav">
         <a href="#how-it-works" class="text-sm font-medium text-secondary hover:text-on-surface transition-colors">How It Works</a>
         <a href="#markets" class="text-sm font-medium text-secondary hover:text-on-surface transition-colors">Markets</a>
         <a href="#about" class="text-sm font-medium text-secondary hover:text-on-surface transition-colors">About</a>
@@ -529,19 +651,27 @@
       <button onclick="openModal()" class="cta-primary text-sm" style="padding: 8px 18px; box-shadow: none;">Hire</button>
     </div>
   </div>
-</nav>
+<div class="mobile-menu md:hidden" id="mobileMenu">
+          <a href="#how-it-works" onclick="toggleMobileMenu()" class="block text-white text-lg font-medium py-4 border-b border-white/10">How It Works</a>
+          <a href="#markets" onclick="toggleMobileMenu()" class="block text-white text-lg font-medium py-4 border-b border-white/10">Markets</a>
+          <a href="#about" onclick="toggleMobileMenu()" class="block text-white text-lg font-medium py-4 border-b border-white/10">About</a>
+          <a href="/mcp/alicelabs-energy" onclick="toggleMobileMenu()" class="block text-white text-lg font-medium py-4 border-b border-white/10">MCP Server</a>
+          <a href="/agents" onclick="toggleMobileMenu()" class="block text-white text-lg font-medium py-4 border-b border-white/10">Agent Program</a>
+          <button onclick="openModal(); toggleMobileMenu()" class="cta-primary mt-4 w-full">Compare My Rate</button>
+        </div>
+      </nav>
 
 <!-- HERO -->
-<header class="hero-bg min-h-[88vh] flex items-center pt-20">
+<header class="hero-bg hero-section min-h-[88vh] flex items-center pt-20">
   <div class="grid-lines"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full py-20">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <div class="hero-grid grid lg:grid-cols-2 gap-16 items-center">
       <div>
         <div class="pill-badge fade-up mb-6">
           <span class="material-symbols-outlined filled" style="font-size:14px;">verified</span>
           Authorized Affiliate Partner
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] tracking-tight mb-6 fade-up delay-1">
+        <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] tracking-tight mb-6 fade-up delay-1">
           Choose Your Energy Advantage.<br/>
           <span style="background: linear-gradient(90deg, #DF2F4D, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Electricity & Natural Gas.</span>
         </h1>
@@ -560,20 +690,20 @@
       </div>
 
       <!-- Stats column -->
-      <div class="grid grid-cols-2 gap-4 fade-up delay-4">
+      <div class="stats-grid grid grid-cols-2 gap-4 fade-up delay-4">
         <div class="stat-card col-span-2">
           <div class="section-overline mb-3">Typical Client Result</div>
           <div class="text-4xl font-black text-white mb-1">25–40%</div>
           <div class="text-slate-400 text-sm">below utility default supply rates, based on Bid On Energy's market analysis across 12 deregulated states</div>
         </div>
         <div class="stat-card">
-          <div class="text-3xl font-black text-white mb-1 flex items-center gap-1">
+          <div class="stat-number text-3xl font-black text-white mb-1 flex items-center gap-1">
             12+ <span class="material-symbols-outlined neon-bolt" style="font-size: 28px;">bolt</span>
           </div>
           <div class="text-slate-400 text-sm">competing suppliers bidding on your account</div>
         </div>
         <div class="stat-card">
-          <div class="text-3xl font-black text-white mb-1 flex items-center gap-1">
+          <div class="stat-number text-3xl font-black text-white mb-1 flex items-center gap-1">
             ~2 min <span class="material-symbols-outlined neon-bolt" style="font-size: 28px;">bolt</span>
           </div>
           <div class="text-slate-400 text-sm">to initiate competitive bidding process</div>
@@ -622,7 +752,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="text-center mb-20">
       <div class="section-overline mb-3">How It Works</div>
-      <h2 class="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight mb-6">
+      <h2 class="section-title text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight mb-6">
         From utility bill to competing offers<br/>
         <span style="background: linear-gradient(90deg, #DF2F4D, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">in under 24 hours.</span>
       </h2>
@@ -631,7 +761,7 @@
       </p>
     </div>
 
-    <div class="grid md:grid-cols-4 gap-6 mb-16">
+    <div class="card-grid grid md:grid-cols-4 gap-6 mb-16">
       <div class="text-center group">
         <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-primary/5 border border-primary/20 mb-6 group-hover:bg-primary/10 group-hover:border-primary/40 transition-colors">
           <span class="material-symbols-outlined text-primary" style="font-size:32px;">description</span>
@@ -677,7 +807,7 @@
       </div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    <div class="card-grid grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
       <div class="p-6 rounded-2xl bg-surface border border-surface-container-high">
         <div class="flex items-center gap-2 mb-3">
           <span class="material-symbols-outlined text-primary" style="font-size:20px;">schedule</span>
@@ -724,7 +854,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="max-w-3xl mb-16 animate-on-scroll slide-up-init">
       <div class="section-overline mb-3">Energy Solutions</div>
-      <h2 class="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight mb-6">Strategic Discount Procurement</h2>
+      <h2 class="section-title text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight mb-6">Strategic Discount Procurement</h2>
       <p class="text-lg text-secondary leading-relaxed">We specialize in identifying market inefficiencies to secure the lowest possible rates for your commercial facility.</p>
     </div>
 
@@ -817,7 +947,7 @@
     <div class="grid lg:grid-cols-2 gap-20 items-center">
       <div class="animate-on-scroll slide-right-init">
         <div class="text-[11px] font-bold uppercase tracking-[0.2em] mb-4" style="color:#C9951F;">Gas Choice Advantage</div>
-        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-8" style="color:#EFF6FF;">Maximize Your Industrial Gas Strategy</h2>
+        <h2 class="section-title text-4xl md:text-5xl font-extrabold tracking-tight mb-8" style="color:#EFF6FF;">Maximize Your Industrial Gas Strategy</h2>
         <div class="space-y-6">
           <p class="text-lg leading-relaxed" style="color:#7A9EC0;">
             Unlike electricity, natural gas volatility is heavily influenced by pipeline capacity and weather-driven demand. We help your business lock in "Gas Choice" rates that bypass the utility's high-margin supply.
@@ -892,7 +1022,7 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll slide-up-init">
       <div class="section-overline mb-3">Industry Focus</div>
-      <h2 class="text-4xl font-extrabold text-on-surface tracking-tight">Expertise Across All High-Consumption Sectors</h2>
+      <h2 class="section-title text-4xl font-extrabold text-on-surface tracking-tight">Expertise Across All High-Consumption Sectors</h2>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -927,10 +1057,10 @@
 <!-- WHY BIDDING BEATS SHOPPING -->
 <section id="markets" class="py-24 bg-surface-container-low">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <div class="hero-grid grid lg:grid-cols-2 gap-16 items-center">
       <div>
         <div class="section-overline mb-3">The Market Advantage</div>
-        <h2 class="text-4xl font-extrabold text-on-surface tracking-tight mb-6">Why Auction Beats Shopping Around</h2>
+        <h2 class="section-title text-4xl font-extrabold text-on-surface tracking-tight mb-6">Why Auction Beats Shopping Around</h2>
         <div class="space-y-8">
           <div class="highlight-box">
             <h3 class="font-bold text-on-surface mb-2">Utility Default = Overpaying</h3>
@@ -993,11 +1123,11 @@
 <!-- ABOUT ALICE LABS -->
 <section id="about" class="py-24 bg-surface">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <div class="hero-grid grid lg:grid-cols-2 gap-16 items-center">
       <!-- Left: About -->
       <div class="bg-white rounded-3xl p-10 lg:p-14" style="box-shadow: 0 12px 48px rgba(25,28,29,0.07);">
         <div class="section-overline mb-4">About AliceLabs</div>
-        <h2 class="text-3xl font-extrabold text-on-surface tracking-tight mb-6">Your Technology Partner for Energy Savings</h2>
+        <h2 class="section-title text-3xl font-extrabold text-on-surface tracking-tight mb-6">Your Technology Partner for Energy Savings</h2>
         <p class="text-secondary leading-relaxed mb-6">
           AliceLabs LLC is a U.S.-registered software and technology services company. As a Bid On Energy affiliate, we bring our client base — businesses across a range of industries — access to commercial energy procurement tools that were previously reserved for large enterprises.
         </p>
@@ -1031,7 +1161,7 @@
       <!-- Right: Who is this for -->
       <div>
         <div class="section-overline mb-4">Who This Is For</div>
-        <h2 class="text-3xl font-extrabold text-on-surface tracking-tight mb-6">From Small Business to Industrial Scale</h2>
+        <h2 class="section-title text-3xl font-extrabold text-on-surface tracking-tight mb-6">From Small Business to Industrial Scale</h2>
         <p class="text-secondary mb-8 leading-relaxed">If your business operates in a deregulated state and pays a monthly utility bill, you are likely overpaying. Bid On Energy's auction platform is effective regardless of consumption size — from a small retail location to a large commercial facility.</p>
 
         <div class="space-y-4">
@@ -1070,14 +1200,14 @@
 </section>
 
 <!-- CTA / CONTACT -->
-<section id="contact" class="hero-bg py-24 relative overflow-hidden">
+<section id="contact" class="hero-bg hero-section py-24 relative overflow-hidden">
   <div class="grid-lines"></div>
   <div class="relative z-10 max-w-3xl mx-auto px-6 lg:px-10 text-center">
     <div class="pill-badge mb-6 mx-auto" style="width: fit-content;">
       <span class="material-symbols-outlined filled" style="font-size:14px;">bolt</span>
       No Obligation. Free to Compare.
     </div>
-    <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
+    <h2 class="section-title text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
       Ready to See Your Actual Savings?
     </h2>
     <p class="text-slate-300 text-lg mb-10 leading-relaxed">
@@ -1112,7 +1242,7 @@
         <span class="material-symbols-outlined" style="font-size:14px;">smart_toy</span>
         MCP Server Available
       </div>
-      <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+      <h2 class="section-title text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
         Built for AI Agents & Vertical Copilots
       </h2>
       <p class="text-slate-300 text-lg max-w-2xl mx-auto">
@@ -1120,7 +1250,7 @@
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 mb-12">
+    <div class="card-grid grid md:grid-cols-3 gap-6 mb-12">
       <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#DF2F4D]/40 transition-colors">
         <div class="w-12 h-12 rounded-xl bg-[#DF2F4D]/10 border border-[#DF2F4D]/30 flex items-center justify-center mb-4">
           <span class="material-symbols-outlined text-[#DF2F4D]" style="font-size:24px;">gavel</span>
@@ -1150,7 +1280,7 @@
     </div>
 
     <div class="p-8 rounded-3xl bg-gradient-to-br from-[#0B1220] to-[#1a0a14] border border-[#DF2F4D]/30">
-      <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div class="card-grid grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h3 class="text-2xl font-bold text-white mb-3">Install in your MCP client</h3>
           <p class="text-slate-400 text-sm mb-4">Compatible with Claude Desktop, Cursor, Cline, Continue.dev, and any MCP-aware agent runtime.</p>
@@ -1212,7 +1342,7 @@
 <!-- FOOTER REDESIGNED -->
 <footer class="bg-on-surface pt-20 pb-10 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid md:grid-cols-4 gap-12 mb-16">
+    <div class="footer-grid grid md:grid-cols-4 gap-12 mb-16">
       <div class="col-span-2">
         <div class="flex items-center gap-2 mb-6">
           <span class="text-white font-extrabold text-xl tracking-tighter">AliceLabs</span>
@@ -1260,7 +1390,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="material-symbols-outlined modal-close" onclick="closeModal()">close</span>
-      <h2 class="text-3xl font-extrabold mb-1">Get Competing Energy Quotes</h2>
+      <h2 class="section-title text-3xl font-extrabold mb-1">Get Competing Energy Quotes</h2>
       <p class="text-sm opacity-70">12+ suppliers — instant results — no obligation</p>
     </div>
     <div class="modal-body">
@@ -1437,7 +1567,7 @@
                 <span class="material-symbols-outlined filled text-[#C9951F]" style="font-size:40px; text-shadow: 0 0 15px rgba(201,149,31,0.8);">bolt</span>
               </div>
               
-              <h2 class="text-3xl font-black text-white mb-2 uppercase tracking-tight">Success!</h2>
+              <h2 class="section-title text-3xl font-black text-white mb-2 uppercase tracking-tight">Success!</h2>
               <div class="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-[#C9951F] uppercase tracking-widest mb-6">
                 Ref ID: ${refId}
               </div>
@@ -1482,6 +1612,28 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    if (menu) {
+      menu.classList.toggle('open');
+      const icon = document.querySelector('.mobile-nav-toggle span');
+      if (icon) {
+        icon.textContent = menu.classList.contains('open') ? 'close' : 'menu';
+      }
+    }
+  }
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const toggle = document.querySelector('.mobile-nav-toggle');
+    if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.classList.remove('open');
+      const icon = document.querySelector('.mobile-nav-toggle span');
+      if (icon) icon.textContent = 'menu';
+    }
+  });
 </script>
 
 </body>
