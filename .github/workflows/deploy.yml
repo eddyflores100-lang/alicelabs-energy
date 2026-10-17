@@ -10,7 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # The deploy needs the service-account JSON as a repo secret. One-time
+      # setup (see setup-auto-deploy.sh at the repo root): generate the key in
+      # the Firebase console and run 'bash setup-auto-deploy.sh'. Until then,
+      # skip cleanly instead of failing every push to main.
+      - name: Check for the service-account secret
+        id: creds
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ALICELABS_ADS }}
+        run: |
+          if [ -z "$SA" ]; then
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::FIREBASE_SERVICE_ACCOUNT_ALICELABS_ADS is not set - skipping the Firebase deploy. One-time fix: run 'bash setup-auto-deploy.sh' at the repo root."
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: steps.creds.outputs.present == 'true'
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ALICELABS_ADS }}
